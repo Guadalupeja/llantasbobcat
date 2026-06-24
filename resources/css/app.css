@@ -4,3 +4,17 @@
 @source "../../storage/framework/views/*.php";
 @source "../**/*.blade.php";
 @source "../**/*.js";
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: "Open Sans", Arial, sans-serif;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}

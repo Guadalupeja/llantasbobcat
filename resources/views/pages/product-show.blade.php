@@ -124,9 +124,29 @@
                                         height="300"
                                     />
                                 </div>
-                                <h4 class="mt-4 line-clamp-2 text-[17px] font-bold leading-6 text-black">{{ $item['name'] }}</h4>
-                                <p class="mt-2 text-[16px] font-bold text-[#ff6001]">Ver precio final</p>
-                                <a href="{{ $item['url'] }}" target="_blank" rel="noopener" class="mt-3 inline-flex w-full items-center justify-center bg-black px-4 py-2 text-[13px] font-bold text-white transition hover:bg-[#ff6001]">Ver producto</a>
+                               <h4 class="mt-4 line-clamp-2 text-[17px] font-bold leading-6 text-black">
+    {{ $item['name'] }}
+</h4>
+
+@if (! empty($item['price_label']))
+    <div class="mt-2">
+        <p class="text-[18px] font-black leading-6 text-[#ff6001]">
+            {{ str_replace(' MXN IVA incluido', ' MXN', $item['price_label']) }}
+        </p>
+
+        <p class="text-[12px] font-bold text-[#666]">
+            IVA incluido
+        </p>
+    </div>
+@else
+    <p class="mt-2 text-[15px] font-bold text-[#ff6001]">
+        Precio bajo consulta
+    </p>
+@endif
+
+<a href="{{ $item['url'] }}" target="_blank" rel="noopener" class="mt-3 inline-flex w-full items-center justify-center bg-black px-4 py-2 text-[13px] font-bold text-white transition hover:bg-[#ff6001]">
+    Ver producto
+</a>
                             </article>
                         @endforeach
                     </div>
@@ -157,12 +177,42 @@
                                 <div><p class="font-bold text-black">Marca</p><p>{{ $item['brand'] }}</p></div>
                                 <div><p class="font-bold text-black">Modelo</p><p>{{ $item['line'] ?: 'Consultar' }}</p></div>
                                 <div><p class="font-bold text-black">Turnos</p><p>{{ $item['turns'] ?: 'Consultar' }}</p></div>
-                                <div><p class="font-bold text-black">Precio</p><p class="font-bold text-[#ff6001]">Ver precio final</p></div>
-                            </div>
-                            <div class="mt-5 grid gap-3 sm:grid-cols-2">
-                                <a href="{{ $item['url'] }}" target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-[#ff6001] px-4 py-3 text-[14px] font-bold text-white transition hover:bg-black">Comprar en línea</a>
-                                <a href="https://wa.me/528332395885?text={{ urlencode($item['whatsapp_text']) }}" target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-[#01a300] px-4 py-3 text-[14px] font-bold text-white transition hover:bg-[#018a00]">Cotizar</a>
-                            </div>
+<div>
+    <p class="font-bold text-black">Precio</p>
+
+    @if (! empty($item['price_label']))
+        <p class="text-[18px] font-black leading-6 text-[#ff6001]">
+            {{ str_replace(' MXN IVA incluido', ' MXN', $item['price_label']) }}
+        </p>
+
+        <p class="mt-1 text-[12px] font-bold text-[#666]">
+            IVA incluido
+        </p>
+    @else
+        <p class="font-bold text-[#ff6001]">
+            Precio bajo consulta
+        </p>
+    @endif
+</div>                            </div>
+<div class="mt-5 grid gap-3 sm:grid-cols-2">
+    <a
+        href="{{ $item['url'] }}"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center justify-center bg-[#ff6001] px-4 py-3 text-[14px] font-bold text-white transition hover:bg-black"
+    >
+        Comprar en línea
+    </a>
+
+    <a
+        href="https://wa.me/528332395885?text={{ urlencode($item['whatsapp_text']) }}"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center justify-center bg-[#01a300] px-4 py-3 text-[14px] font-bold text-white transition hover:bg-[#018a00]"
+    >
+        Cotizar
+    </a>
+</div>
                         </div>
                     </article>
                 @endforeach

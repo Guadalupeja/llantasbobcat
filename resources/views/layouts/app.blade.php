@@ -98,11 +98,15 @@
             {{-- Logo --}}
             <div class="flex w-[45%] items-center lg:w-[17%]">
                 <a href="{{ url('/') }}" class="inline-block">
-                    <img
-                        src="https://cdn-fnckj.nitrocdn.com/OEigyWnrTCqTXTtoxkmZdbSZZjfcgSQv/assets/images/optimized/rev-47f8cd9/llantasbobcat.com/wp-content/uploads/2022/01/ruguex-llantas-para-montacargas-distrubuidor-trelleborg-1.png-1.png"
-                        alt="Ruguex llantas para minicargadores"
+                    <x-optimized-image
+                        src="https://cdn-fnckj.nitrocdn.com/OEigyWnrTCqTXTtoxkmZdbSZZjfcgSQv/assets/images/optimized/rev-47f8cd9/llantasbobcat.com/wp-content/uploads/2022/03/ruguex-llantas-para-montacargas-distrubuidor-trelleborg.png"
+                        alt="Ruguex llantas para minicargadores Bobcat"
                         class="h-auto max-w-[150px] lg:max-w-[180px]"
-                    >
+                        loading="eager"
+                        fetchpriority="high"
+                        width="234"
+                        height="90"
+                    />
                 </a>
             </div>
 
@@ -232,11 +236,13 @@
     <div class="mx-auto grid max-w-[1200px] gap-10 px-4 py-14 lg:grid-cols-[1fr_1fr_1.15fr]">
         {{-- Columna marca --}}
         <div>
-            <img
+            <x-optimized-image
                 src="https://cdn-fnckj.nitrocdn.com/OEigyWnrTCqTXTtoxkmZdbSZZjfcgSQv/assets/images/optimized/rev-47f8cd9/llantasbobcat.com/wp-content/uploads/2022/03/ruguex-llantas-para-montacargas-distrubuidor-trelleborg.png"
                 alt="Ruguex"
                 class="h-auto max-w-[234px]"
-            >
+                width="234"
+                height="90"
+            />
 
             <p class="mt-5 text-[15px] leading-7 text-white/75">
                 Llantas sólidas y neumáticas para minicargadores Bobcat.

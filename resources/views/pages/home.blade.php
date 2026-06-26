@@ -242,11 +242,15 @@
             <div class="relative overflow-hidden bg-white p-4 shadow-2xl md:p-5">
                 <div class="grid gap-4 md:grid-cols-[1.05fr_.95fr]">
                     <div class="flex min-h-[245px] items-center justify-center bg-[#f6f6f6] p-4">
-                        <img
-                            src="{{ $products->first()['image'] ?? '' }}"
+                        <x-optimized-image
+                            :src="$products->first()['image'] ?? ''"
                             alt="Llantas para minicargadores Bobcat"
                             class="h-auto max-h-[245px] w-auto object-contain"
-                        >
+                            loading="eager"
+                            fetchpriority="high"
+                            width="640"
+                            height="420"
+                        />
                     </div>
 
                     <div class="grid gap-3">
@@ -310,11 +314,13 @@
                                         class="bobcat-hero-product-card group"
                                     >
                                         <div class="bobcat-hero-product-image">
-                                            <img
-                                                src="{{ $item['image'] }}"
-                                                alt="{{ $item['name'] }}"
+                                            <x-optimized-image
+                                                :src="$item['image']"
+                                                :alt="$item['name']"
                                                 class="transition group-hover:scale-105"
-                                            >
+                                                width="300"
+                                                height="300"
+                                            />
                                         </div>
 
                                         <div class="bobcat-hero-product-info">
@@ -477,7 +483,13 @@
                     data-search="{{ $product['name'] }} {{ $product['model'] }} {{ implode(' ', $product['sizes'] ?? []) }} {{ implode(' ', $product['tire_types'] ?? []) }}">
                     <a href="{{ route('products.show', $product['slug']) }}" class="block">
                         <div class="relative flex h-[230px] items-center justify-center bg-[#fafafa]">
-                            <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}" class="h-full w-full object-cover transition duration-300 group-hover:scale-105">
+                            <x-optimized-image
+                                :src="$product['image']"
+                                :alt="$product['name']"
+                                class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                                width="420"
+                                height="260"
+                            />
 
                             <div class="absolute left-4 top-4 flex flex-wrap gap-2">
                                 @foreach ($product['tire_types'] as $type)

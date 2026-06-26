@@ -1,24 +1,8 @@
 @extends('layouts.app')
 
-@php
-    use Illuminate\Support\Str;
+@section('title', 'Llantas ' . $label . ' para Bobcat | Ruguex')
 
-    $seoYear = date('Y');
-
-    $seoLabel = $label ?? 'Bobcat';
-
-    $seoTitle = Str::limit("Llantas {$seoLabel} para Bobcat | Ruguex", 60, '');
-
-    $seoDescription = Str::limit(
-        "Mejores llantas {$seoLabel} para Bobcat {$seoYear}. Revisa modelos, medidas y opciones para minicargador con compra en línea o cotización por WhatsApp.",
-        160,
-        ''
-    );
-@endphp
-
-@section('title', $seoTitle)
-
-@section('meta_description', $seoDescription)
+@section('meta_description', 'Modelos Bobcat compatibles con llanta ' . $label . '. Cotiza opciones para minicargadores Bobcat.')
 
 @section('content')
 
@@ -80,7 +64,13 @@
             @foreach ($products as $product)
                 <a href="{{ route('products.show', $product['slug']) }}" class="group block overflow-hidden bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
                     <div class="relative flex h-[230px] items-center justify-center bg-[#fafafa]">
-                        <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}" class="h-full w-full object-cover transition duration-300 group-hover:scale-105">
+                        <x-optimized-image
+                            :src="$product['image']"
+                            :alt="$product['name']"
+                            class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                            width="420"
+                            height="260"
+                        />
 
                         <div class="absolute left-4 top-4 flex flex-wrap gap-2">
                             @foreach ($product['tire_types'] as $type)

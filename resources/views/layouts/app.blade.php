@@ -5,6 +5,39 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+    @php
+    $gtmId = config('services.gtm.id');
+@endphp
+
+@if (! empty($gtmId))
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: 'page_data',
+            page_path: window.location.pathname,
+            page_title: document.title || '',
+            site_section: 'llantas_bobcat'
+        });
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){
+            w[l]=w[l]||[];
+            w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+            var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),
+                dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true;
+            j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+            f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','{{ $gtmId }}');
+    </script>
+    <!-- End Google Tag Manager -->
+@endif
+
+
 <title>@yield('title', 'Llantas para Bobcat | Ruguex')</title>
 
 <meta name="description" content="@yield('meta_description', 'Compra y cotiza llantas para minicargadores Bobcat con asesoría Ruguex.')">
@@ -372,17 +405,7 @@
 </footer>
 
     {{-- Floating WhatsApp --}}
-    <div class="fixed bottom-5 right-5 z-[9999]">
-        <a
-            href="https://wa.me/528332395885?text=%C2%A1Hola%20RUGUEX!%20Tengo%20una%20pregunta%20sobre%20llantas%20para%20minicargador%20Bobcat."
-            target="_blank"
-            rel="noopener"
-            class="flex h-10 items-center justify-center rounded-full bg-[#e0e0e0] px-4 text-[14px] text-[#333] shadow-[0_2px_8px_rgba(0,0,0,.2)] transition hover:bg-white"
-        >
-            <span class="mr-2">🟢</span>
-            Cotiza por WhatsApp
-        </a>
-    </div>
+<x-whatsapp-chat />
 
 </body>
 </html>

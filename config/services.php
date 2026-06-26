@@ -39,6 +39,8 @@ return [
     'endpoint' => env('RUGUEX_PRICES_ENDPOINT'),
     'cache_minutes' => (int) env('RUGUEX_PRICES_CACHE_MINUTES', 15),
 ],
-
+'gtm' => [
+    'id' => env('GTM_CONTAINER_ID'),
+],
 
 ];

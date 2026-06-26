@@ -42,6 +42,12 @@
 
 <meta name="description" content="@yield('meta_description', 'Compra y cotiza llantas para minicargadores Bobcat con asesoría Ruguex.')">
 
+@if (config('app.noindex'))
+    <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+@else
+    <meta name="robots" content="index,follow">
+@endif
+
 <link rel="canonical" href="{{ url()->current() }}">
 
 <meta property="og:title" content="@yield('title', 'Llantas para Bobcat | Ruguex')">

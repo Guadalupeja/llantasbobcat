@@ -31,23 +31,27 @@ class BobcatProductController extends Controller
         return view('pages.home', compact('products', 'models', 'sizes', 'featuredStoreProducts'));
     }
 
-    public function type(string $type)
-    {
-        abort_unless(in_array($type, ['neumatica', 'solida']), 404);
+public function type(string $type)
+{
+    abort_unless(in_array($type, ['neumatica', 'solida']), 404);
 
-        $label = $type === 'neumatica' ? 'Neumática' : 'Sólida';
+    $label = $type === 'neumatica' ? 'Neumática' : 'Sólida';
 
-        $products = $this->bobcatProducts()
-            ->filter(function ($product) use ($type) {
-                $types = collect($product['tire_types'] ?? [])
-                    ->map(fn ($value) => str($value)->lower()->ascii()->toString());
+    $products = $this->bobcatProducts()
+        ->filter(function ($product) use ($type) {
+            $types = collect($product['tire_types'] ?? [])
+                ->map(fn ($value) => str($value)->lower()->ascii()->toString());
 
-                return $types->contains(fn ($value) => str_contains($value, $type));
-            })
-            ->values();
+            return $types->contains(fn ($value) => str_contains($value, $type));
+        })
+        ->values();
 
-        return view('pages.tire-type', compact('products', 'type', 'label'));
-    }
+    return view('pages.tire-type', compact('products', 'type', 'label'));
+}
+public function tireType(string $type)
+{
+    return $this->type($type);
+}
 
     public function show(string $slug)
     {

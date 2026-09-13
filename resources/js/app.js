@@ -1,3 +1,15 @@
+import Alpine from 'alpinejs';
+import bobcatAiChat from './components/bobcat-chat-agent-ai';
+
+window.Alpine = Alpine;
+
+Alpine.data(
+    'bobcatAiChat',
+    bobcatAiChat
+);
+
+Alpine.start();
+
 document.addEventListener('DOMContentLoaded', () => {
     const button = document.querySelector('.js-mobile-menu-button');
     const menu = document.querySelector('.js-mobile-menu');

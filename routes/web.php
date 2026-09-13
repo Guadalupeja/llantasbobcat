@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BobcatProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BobcatLeadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -174,6 +175,10 @@ Route::get('/tipo-de-llanta/{type}', [BobcatProductController::class, 'tireType'
 
 Route::get('/producto/{slug}', [BobcatProductController::class, 'show'])
     ->name('products.show');
+
+
+Route::post('/chat-ruguex/lead', [BobcatLeadController::class, 'store'])
+    ->name('chat.ruguex.lead.store');
 
 /**
  * Fallback:

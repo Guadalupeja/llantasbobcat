@@ -426,7 +426,9 @@
 </footer>
 
     {{-- Floating WhatsApp --}}
-<x-whatsapp-chat />
+<x-bobcat-chat-agent />
 
+<x-whatsapp-chat />
+ @stack('scripts')
 </body>
 </html>

@@ -1,3 +1,9 @@
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();
+
 document.addEventListener('DOMContentLoaded', () => {
     const button = document.querySelector('.js-mobile-menu-button');
     const menu = document.querySelector('.js-mobile-menu');

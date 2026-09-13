@@ -1,8 +1,15 @@
 @php
+    use Carbon\Carbon;
+
+    $now = Carbon::now('America/Mexico_City');
+    $isBusinessHours = $now->isWeekday() && $now->hour >= 9 && $now->hour < 18;
+
     $whatsappNumber = '528332395885';
     $defaultText = 'Hola RUGUEX, quiero cotizar llantas para Bobcat.';
     $encodedDefaultText = rawurlencode($defaultText);
 @endphp
+
+@if ($isBusinessHours)
 
 <div class="fixed bottom-5 right-5 z-[9999] font-sans">
     <div
@@ -130,3 +137,5 @@
         });
     </script>
 @endonce
+
+@endif

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BobcatProductController;
+use App\Http\Controllers\RgxAssistantAdapterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -174,6 +175,10 @@ Route::get('/tipo-de-llanta/{type}', [BobcatProductController::class, 'tireType'
 
 Route::get('/producto/{slug}', [BobcatProductController::class, 'show'])
     ->name('products.show');
+
+Route::post('/chat-ruguex/message', RgxAssistantAdapterController::class)
+    ->middleware('throttle:12,5')
+    ->name('chat.ruguex.message');
 
 /**
  * Fallback:

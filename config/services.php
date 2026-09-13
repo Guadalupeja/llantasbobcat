@@ -39,6 +39,21 @@ return [
     'endpoint' => env('RUGUEX_PRICES_ENDPOINT'),
     'cache_minutes' => (int) env('RUGUEX_PRICES_CACHE_MINUTES', 15),
 ],
+'ruguex_core' => [
+    'url' => env(
+        'RGX_ASSISTANT_CORE_URL'
+    ),
+
+    'token' => env(
+        'RGX_ASSISTANT_CORE_TOKEN'
+    ),
+
+    'timeout' => (int) env(
+        'RGX_ASSISTANT_CORE_TIMEOUT',
+        30
+    ),
+],
+
 'gtm' => [
     'id' => env('GTM_CONTAINER_ID'),
 ],
